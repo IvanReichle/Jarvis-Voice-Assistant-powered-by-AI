@@ -8,7 +8,11 @@ A real-time, voice-controlled desktop assistant built in Python. Jarvis listens,
 
 ## 🎥 Demo
 
-> _Add a short demo video or GIF here (30–45s): say "Jarvis, open YouTube", ask a question, change the volume — show it responding by voice with the HUD reacting. This is the most impactful part of the project._
+> https://github.com/user-attachments/assets/3ddeb91d-cd79-4b8b-a4ec-08ea2e591a08 
+
+
+
+
 
 ---
 

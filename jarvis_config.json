@@ -1,0 +1,53 @@
+{
+    "perfil_usuario": {
+        "nombre": "Ivan",
+        "juegos": ["League of Legends", "Steam", "juegos de Steam en general"],
+        "apps_favoritas": ["Google Chrome", "Discord", "Steam", "League of Legends", "Visual Studio Code", "Explorador de archivos"],
+        "preferencias": ["respuestas rápidas y directas", "abrir apps sin complicaciones"],
+        "notas": "Usuario gamer español. Sus apps del día a día son Chrome, Discord, Steam, LoL y VSCode. Cuando mencione 'el juego' probablemente se refiere a League of Legends o Steam."
+    },
+    "app_paths": {
+        "discord": "C:\\Users\\tickl\\AppData\\Local\\Discord\\Update.exe --processStart Discord.exe",
+        "steam": "C:\\Program Files (x86)\\Steam\\Steam.exe",
+        "riot": "C:\\Riot Games\\Riot Client\\RiotClientServices.exe",
+        "spotify": "C:\\Users\\tickl\\AppData\\Roaming\\Spotify\\Spotify.exe",
+        "chrome": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+        "vscode": "C:\\Users\\tickl\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
+    },
+    "voice": {
+        "elevenlabs_voice_id": "4YYIPFl9wE5c4L2eu2Gb",
+        "model_id": "eleven_turbo_v2_5",
+        "language_code": "es",
+        "voice_settings": {
+            "stability": 0.55,
+            "similarity_boost": 0.65,
+            "style": 0.2,
+            "use_speaker_boost": true,
+            "speed": 1.1
+        },
+        "streaming": true,
+        "_nota_modelos": {
+            "eleven_turbo_v2_5": "Alta calidad + velocidad",
+            "eleven_flash_v2_5": "Mas rapido, calidad algo menor"
+        }
+    },
+    "memory": {
+        "historial_reciente": 10,
+        "memoria_larga_max": 100
+    },
+    "wake_word": {
+        "activaciones_fallback": [
+            "jarvis",
+            "harvees",
+            "harvis",
+            "jarbes",
+            "harvey",
+            "jarbis",
+            "harbis"
+        ]
+    },
+    "conversacion": {
+        "free_talk": true,
+        "_nota": "free_talk=true: Jarvis escucha sin wake word al arrancar. Di 'modo normal' para volver a necesitar 'hey Jarvis', y 'modo libre' para reactivarlo."
+    }
+}

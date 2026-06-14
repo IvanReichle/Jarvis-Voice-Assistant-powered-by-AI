@@ -1,21 +1,21 @@
 {
     "perfil_usuario": {
-        "nombre": "Ivan",
-        "juegos": ["League of Legends", "Steam", "juegos de Steam en general"],
-        "apps_favoritas": ["Google Chrome", "Discord", "Steam", "League of Legends", "Visual Studio Code", "Explorador de archivos"],
-        "preferencias": ["respuestas rápidas y directas", "abrir apps sin complicaciones"],
-        "notas": "Usuario gamer español. Sus apps del día a día son Chrome, Discord, Steam, LoL y VSCode. Cuando mencione 'el juego' probablemente se refiere a League of Legends o Steam."
+        "nombre": "TuNombre",
+        "juegos": ["League of Legends", "Steam"],
+        "apps_favoritas": ["Google Chrome", "Discord", "Steam", "Visual Studio Code"],
+        "preferencias": ["respuestas rápidas y directas"],
+        "notas": "Descripción del usuario. Personaliza esto."
     },
     "app_paths": {
-        "discord": "C:\\Users\\tickl\\AppData\\Local\\Discord\\Update.exe --processStart Discord.exe",
+        "discord": "C:\\Users\\TU_USUARIO\\AppData\\Local\\Discord\\Update.exe --processStart Discord.exe",
         "steam": "C:\\Program Files (x86)\\Steam\\Steam.exe",
         "riot": "C:\\Riot Games\\Riot Client\\RiotClientServices.exe",
-        "spotify": "C:\\Users\\tickl\\AppData\\Roaming\\Spotify\\Spotify.exe",
+        "spotify": "C:\\Users\\TU_USUARIO\\AppData\\Roaming\\Spotify\\Spotify.exe",
         "chrome": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
-        "vscode": "C:\\Users\\tickl\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
+        "vscode": "C:\\Users\\TU_USUARIO\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
     },
     "voice": {
-        "elevenlabs_voice_id": "4YYIPFl9wE5c4L2eu2Gb",
+        "elevenlabs_voice_id": "TU_VOICE_ID_DE_ELEVENLABS",
         "model_id": "eleven_turbo_v2_5",
         "language_code": "es",
         "voice_settings": {

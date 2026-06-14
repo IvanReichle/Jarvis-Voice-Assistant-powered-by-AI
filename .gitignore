@@ -4,3 +4,5 @@ __pycache__/
 jarvis_memoria.json
 jarvis_config.json
 *.pyc
+.env
+graphify-out/

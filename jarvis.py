@@ -6,7 +6,9 @@ jarvis.py — Asistente de voz con:
   · Fallback: si openWakeWord no disponible, usa detección por texto (Whisper)
 
 Instalación de dependencias:
-    pip install openwakeword sounddevice numpy groq elevenlabs pygame requests
+    pip install -r requirements.txt
+    # o individualmente:
+    # pip install openwakeword sounddevice numpy groq elevenlabs pygame requests python-dotenv pyttsx3
 """
 
 import sys
@@ -19,6 +21,9 @@ for _stream in (sys.stdout, sys.stderr):
         _stream.reconfigure(encoding="utf-8", errors="replace")
     except Exception:
         pass
+
+from dotenv import load_dotenv
+load_dotenv()
 
 import webbrowser
 import sounddevice as sd
@@ -369,6 +374,22 @@ def _build_voice_settings() -> VoiceSettings | None:
     )
 
 
+def _hablar_local(texto: str):
+    """Fallback TTS offline usando SAPI de Windows (pyttsx3). Sin calidad de ElevenLabs pero funciona sin internet."""
+    try:
+        import pyttsx3
+        engine = pyttsx3.init()
+        engine.setProperty("rate", 175)
+        for voz in engine.getProperty("voices"):
+            if "spanish" in voz.name.lower() or "es" in voz.id.lower():
+                engine.setProperty("voice", voz.id)
+                break
+        engine.say(texto)
+        engine.runAndWait()
+    except Exception as e:
+        print(f"[TTS local] Error: {e}")
+
+
 def hablar(texto: str) -> bool:
     """Sintetiza y reproduce audio. Devuelve True si el usuario interrumpió (barge-in)."""
     if not texto or not texto.strip():
@@ -391,17 +412,23 @@ def hablar(texto: str) -> bool:
     if v_settings:
         kwargs["voice_settings"] = v_settings
 
-    with tempfile.NamedTemporaryFile(suffix=".mp3", delete=False) as tmp:
-        tmp_path = tmp.name
-        if use_stream:
-            audio_iter = eleven_client.text_to_speech.stream(**kwargs)
-            for chunk in audio_iter:
-                if chunk:
+    try:
+        with tempfile.NamedTemporaryFile(suffix=".mp3", delete=False) as tmp:
+            tmp_path = tmp.name
+            if use_stream:
+                audio_iter = eleven_client.text_to_speech.stream(**kwargs)
+                for chunk in audio_iter:
+                    if chunk:
+                        tmp.write(chunk)
+            else:
+                audio_iter = eleven_client.text_to_speech.convert(**kwargs)
+                for chunk in audio_iter:
                     tmp.write(chunk)
-        else:
-            audio_iter = eleven_client.text_to_speech.convert(**kwargs)
-            for chunk in audio_iter:
-                tmp.write(chunk)
+    except Exception as e:
+        print(f"⚠️  ElevenLabs falló ({e}) — usando TTS local")
+        _gui_log("system", "⚠️ ElevenLabs no disponible — voz local activada")
+        _hablar_local(texto)
+        return False
 
     _barge_in = threading.Event()
     _oww_pausado.set()   # liberar mic para barge-in (OWW no lo necesita mientras hablamos)

@@ -6,8 +6,8 @@ Asistente de voz personal para Windows construido en Python. Escucha, entiende, 
 
 - 🎙️ **Modo conversación libre** — habla directamente sin necesitar wake word
 - 🔊 **Wake word local** — detección offline con openWakeWord (sin API key)
-- 🧠 **IA con Claude** (Anthropic) — respuestas inteligentes y contextuales
-- 🗣️ **Voz sintetizada en tiempo real** con ElevenLabs TTS (streaming)
+- 🧠 **IA con Llama 4 Scout** (via Groq) — respuestas inteligentes y contextuales
+- 🗣️ **Voz sintetizada en tiempo real** con ElevenLabs TTS (streaming + fallback offline)
 - 👂 **Transcripción ultrarrápida** con Groq Whisper STT
 - 💾 **Memoria persistente** — recuerda conversaciones anteriores
 - 🖥️ **Control del PC por voz** — abre apps, busca en Google, cierra programas
@@ -32,8 +32,9 @@ Asistente de voz personal para Windows construido en Python. Escucha, entiende, 
 
 - **Python 3.11+**
 - **Groq Whisper** — transcripción de voz (STT)
-- **Claude AI** (Anthropic) — motor de razonamiento
+- **Llama 4 Scout** (via Groq) — motor de razonamiento con function calling
 - **ElevenLabs** — síntesis de voz (TTS) en streaming
+- **pyttsx3** — TTS local offline como fallback si ElevenLabs no está disponible
 - **openWakeWord** — detección de wake word offline
 - **SoundDevice** — captura de audio
 - **Pygame** — reproducción de audio
@@ -64,7 +65,6 @@ Crea un archivo `.env` en la raíz con tus API keys:
 ```
 GROQ_API_KEY=tu_api_key_de_groq
 ELEVENLABS_API_KEY=tu_api_key_de_elevenlabs
-ANTHROPIC_API_KEY=tu_api_key_de_anthropic
 ```
 
 ### 5. Configura tu perfil
@@ -124,6 +124,5 @@ Jarvis-Voice-Assistant-powered-by-AI/
 
 | Servicio | Para qué | Plan gratuito |
 |---------|---------|--------------|
-| [Groq](https://console.groq.com) | Transcripción de voz (Whisper) | ✅ Sí |
-| [Anthropic](https://console.anthropic.com) | IA (Claude) | ✅ Créditos iniciales |
+| [Groq](https://console.groq.com) | STT (Whisper) + LLM (Llama 4 Scout) | ✅ Sí |
 | [ElevenLabs](https://elevenlabs.io) | Voz sintetizada (TTS) | ✅ 10k chars/mes |
